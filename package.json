@@ -1,0 +1,47 @@
+{
+  "name": "clsmin",
+  "main": "dist/js",
+  "typings": "dist/typings",
+  "version": "0.1.0",
+  "description": "CSS Class Name Minifier.",
+  "license": "MIT",
+  "author": {
+    "name": "Boris Kaul",
+    "email": "localvoid@gmail.com",
+    "url": "https://github.com/localvoid"
+  },
+  "keywords": [
+    "css",
+    "classname",
+    "class",
+    "minify"
+  ],
+  "homepage": "https://github.com/localvoid/clsmin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/localvoid/clsmin"
+  },
+  "bugs": {
+    "url": "https://github.com/localvoid/clsmin/issues"
+  },
+  "github": "https://github.com/localvoid/clsmin",
+  "files": [
+    "dist",
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "dist": "tsc",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "tslib": "^1.7.1"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.10",
+    "tslib": "^1.7.1",
+    "tslint": "^5.5.0",
+    "typescript": "^2.4.1"
+  }
+}
