@@ -23,23 +23,18 @@ function minifiedClassName(index: number): string {
   return String.fromCharCode.apply(String, classNameChars);
 }
 
-export class ClassNameMinifier {
-  readonly index = new Map<string, string>();
-  private lastIndex = 0;
-  private filter: (className: string) => boolean;
+export function clsmin(filter: (className: string) => boolean = () => false): (className: string) => string {
+  const index = new Map<string, string>();
+  let lastIndex = 0;
 
-  constructor(filter: (className: string) => boolean = () => false) {
-    this.filter = filter;
-  }
-
-  get(className: string): string {
-    let result = this.index.get(className);
+  return function (className: string): string {
+    let result = index.get(className);
     if (result === undefined) {
       do {
-        result = minifiedClassName(this.lastIndex++);
-      } while (this.filter(result));
+        result = minifiedClassName(lastIndex++);
+      } while (filter(result));
 
-      this.index.set(className, result);
+      index.set(className, result);
     }
     return result;
   }

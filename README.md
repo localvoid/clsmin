@@ -3,9 +3,9 @@
 ## Usage Example
 
 ```ts
-import { ClassNameMinifier, easyListFilter } from "clsmin";
+import { clsmin, easyListFilter } from "clsmin";
 
-const minifier = new ClassNameMinifier(
+const minifier = clsmin(
   (className) => {
     if (className.startsWith("ad")) {
       return true;
@@ -14,10 +14,12 @@ const minifier = new ClassNameMinifier(
   },
 );
 
-minifier.get("header");
+minifier("header");
 // => a
-minifier.get("footer");
+minifier("footer");
 // => b
+minifier("header");
+// => a
 ```
 
 ## API
@@ -25,11 +27,7 @@ minifier.get("footer");
 ### Class Name Minifier
 
 ```ts
-class ClassNameMinifier {
-  readonly index = new Map<string, string>();
-  constructor(filter: (className: string) => boolean = () => false);
-  get(className: string): string;
-}
+clsmin(filter: (className: string) => boolean = () => false): (className: string) => string;
 ```
 
 ### EasyList
@@ -37,6 +35,6 @@ class ClassNameMinifier {
 Class names blocked by adblocking software.
 
 ```ts
-const EasyListClassNames = new Set<string>;
+const EasyListClassNames: Set<string>;
 function easyListFilter(className: string): boolean;
 ```
