@@ -10014,5 +10014,5 @@ export const EasyListClassNames = new Set<string>([
 ]);
 
 export function easyListFilter(className: string): boolean {
-  return EasyListClassNames.has(className);
+  return !EasyListClassNames.has(className);
 }

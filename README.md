@@ -6,12 +6,7 @@
 import { clsmin, easyListFilter } from "clsmin";
 
 const minifier = clsmin(
-  (className) => {
-    if (className.startsWith("ad")) {
-      return true;
-    }
-    return easyListFilter(className);
-  },
+  (className) => !className.startsWith("ad") && easyListFilter(className),
 );
 
 minifier("header");
@@ -27,7 +22,7 @@ minifier("header");
 ### Class Name Minifier
 
 ```ts
-clsmin(filter: (className: string) => boolean = () => false): (className: string) => string;
+clsmin(filter: (className: string) => boolean = () => true): (className: string) => string;
 ```
 
 ### EasyList

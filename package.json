@@ -2,7 +2,7 @@
   "name": "clsmin",
   "main": "dist/js",
   "typings": "dist/typings",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "CSS Class Name Minifier.",
   "license": "MIT",
   "author": {

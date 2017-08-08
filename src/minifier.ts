@@ -23,7 +23,13 @@ function minifiedClassName(index: number): string {
   return String.fromCharCode.apply(String, classNameChars);
 }
 
-export function clsmin(filter: (className: string) => boolean = () => false): (className: string) => string {
+function defaultFilter(className: string): boolean {
+  return true;
+}
+
+export function clsmin(
+  filter: (className: string) => boolean = defaultFilter,
+): (className: string) => string {
   const index = new Map<string, string>();
   let lastIndex = 0;
 
@@ -32,7 +38,7 @@ export function clsmin(filter: (className: string) => boolean = () => false): (c
     if (result === undefined) {
       do {
         result = minifiedClassName(lastIndex++);
-      } while (filter(result));
+      } while (filter(result) === false);
 
       index.set(className, result);
     }
