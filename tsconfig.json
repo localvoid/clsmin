@@ -15,9 +15,6 @@
       "es2015",
       "dom"
     ],
-    "types": [
-      "node"
-    ],
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitReturns": true,
