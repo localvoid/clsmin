@@ -6,7 +6,10 @@
 import { clsmin, easyListFilter } from "clsmin";
 
 const minifier = clsmin(
-  (className) => !className.startsWith("ad") && easyListFilter(className),
+  (className) => (
+    !className.toLowerCase().startsWith("ad") &&
+    easyListFilter(className)
+  );
 );
 
 minifier("header");
@@ -33,3 +36,9 @@ Class names blocked by adblocking software.
 const EasyListClassNames: Set<string>;
 function easyListFilter(className: string): boolean;
 ```
+
+## ChangeLog
+
+### 1.0.0
+
+- Filter interface is now compatible with `Array.prototype.filter()` method.
